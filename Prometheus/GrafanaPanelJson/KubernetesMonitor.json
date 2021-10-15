@@ -1,0 +1,3002 @@
+{
+    "annotations": {
+        "list": [{
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "type": "dashboard"
+        }]
+    },
+    "description": "Kube Containers Basic Performance",
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 1,
+    "id": 94,
+    "iteration": 1629372907170,
+    "links": [],
+    "panels": [{
+            "cacheTimeout": null,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "decimals": 0,
+                    "mappings": [{
+                        "id": 0,
+                        "op": "=",
+                        "text": "N/A",
+                        "type": 1,
+                        "value": "null"
+                    }],
+                    "min": 0,
+                    "nullValueMode": "connected",
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 6,
+                "x": 0,
+                "y": 0
+            },
+            "hideTimeOverride": true,
+            "id": 20,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 50,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "last"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "value"
+            },
+            "pluginVersion": "7.2.1",
+            "targets": [{
+                "expr": "count(sum by (container) (container_tasks_state{namespace=~\"$cluster_name\"}))",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Services of the Cluster",
+            "type": "stat"
+        },
+        {
+            "cacheTimeout": null,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "decimals": 0,
+                    "mappings": [{
+                        "id": 0,
+                        "op": "=",
+                        "text": "N/A",
+                        "type": 1,
+                        "value": "null"
+                    }],
+                    "min": 0,
+                    "nullValueMode": "connected",
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 6,
+                "x": 6,
+                "y": 0
+            },
+            "hideTimeOverride": true,
+            "id": 75,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 50,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.2.1",
+            "targets": [{
+                "expr": "count(sum by (pod)(container_tasks_state{namespace=~\"$cluster_name\",state=\"running\"}))",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "timeFrom": null,
+            "title": "Running Pods of the Cluster",
+            "type": "stat"
+        },
+        {
+            "cacheTimeout": null,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "decimals": 0,
+                    "mappings": [{
+                        "id": 0,
+                        "op": "=",
+                        "text": "N/A",
+                        "type": 1,
+                        "value": "null"
+                    }],
+                    "min": 0,
+                    "nullValueMode": "connected",
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 12,
+                "x": 12,
+                "y": 0
+            },
+            "hideTimeOverride": true,
+            "id": 7,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 50,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.2.1",
+            "targets": [{
+                "expr": "count(sum by (pod)(container_tasks_state{namespace=~\"$cluster_name\", container=~\"$service_name\",state=\"running\"}))",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "timeFrom": null,
+            "title": "Running Pods of Service(s)",
+            "type": "stat"
+        },
+        {
+            "collapsed": true,
+            "datasource": null,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 4
+            },
+            "id": 46,
+            "panels": [{
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": "P8s_eks_prod",
+                "decimals": 0,
+                "fieldConfig": {
+                    "defaults": {
+                        "custom": {}
+                    },
+                    "overrides": []
+                },
+                "fill": 5,
+                "fillGradient": 0,
+                "gridPos": {
+                    "h": 8,
+                    "w": 24,
+                    "x": 0,
+                    "y": 5
+                },
+                "hiddenSeries": false,
+                "id": 12,
+                "legend": {
+                    "alignAsTable": true,
+                    "avg": false,
+                    "current": true,
+                    "hideEmpty": true,
+                    "hideZero": true,
+                    "max": false,
+                    "min": false,
+                    "rightSide": true,
+                    "show": true,
+                    "sideWidth": 300,
+                    "total": false,
+                    "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "links": [],
+                "maxDataPoints": 500,
+                "nullPointMode": "null as zero",
+                "options": {
+                    "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "7.2.1",
+                "pointradius": 5,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": true,
+                "steppedLine": false,
+                "targets": [{
+                    "expr": "count(sum by (pod)(container_tasks_state{namespace=~\"$cluster_name\", container=~\"$service_name\", state=\"running\"})) by (pod)",
+                    "format": "time_series",
+                    "groupBy": [{
+                            "params": [
+                                "$__interval"
+                            ],
+                            "type": "time"
+                        },
+                        {
+                            "params": [
+                                "null"
+                            ],
+                            "type": "fill"
+                        }
+                    ],
+                    "hide": false,
+                    "instant": false,
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{pod}}",
+                    "orderByTime": "ASC",
+                    "policy": "default",
+                    "refId": "A",
+                    "resultFormat": "time_series",
+                    "select": [
+                        [{
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "field"
+                            },
+                            {
+                                "params": [],
+                                "type": "mean"
+                            }
+                        ]
+                    ],
+                    "step": 10,
+                    "tags": []
+                }],
+                "thresholds": [],
+                "timeFrom": null,
+                "timeRegions": [],
+                "timeShift": null,
+                "title": "Running Pods of Service(s)",
+                "tooltip": {
+                    "shared": true,
+                    "sort": 2,
+                    "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                    "buckets": null,
+                    "mode": "time",
+                    "name": null,
+                    "show": true,
+                    "values": []
+                },
+                "yaxes": [{
+                        "decimals": 0,
+                        "format": "short",
+                        "label": "",
+                        "logBase": 1,
+                        "max": null,
+                        "min": null,
+                        "show": true
+                    },
+                    {
+                        "format": "short",
+                        "label": null,
+                        "logBase": 1,
+                        "max": null,
+                        "min": null,
+                        "show": true
+                    }
+                ],
+                "yaxis": {
+                    "align": false,
+                    "alignLevel": null
+                }
+            }],
+            "title": "Service Status",
+            "type": "row"
+        },
+        {
+            "collapsed": false,
+            "datasource": null,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 5
+            },
+            "id": 44,
+            "panels": [],
+            "repeat": null,
+            "title": "CPU Status",
+            "type": "row"
+        },
+        {
+            "content": "Notice: ` not inlcude istio-proxy`",
+            "datasource": null,
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 24,
+                "x": 0,
+                "y": 6
+            },
+            "id": 64,
+            "links": [],
+            "mode": "markdown",
+            "options": {
+                "content": "Notice: ` not inlcude istio-proxy`",
+                "mode": "markdown"
+            },
+            "pluginVersion": "7.1.0",
+            "title": "Notice",
+            "type": "text"
+        },
+        {
+            "cacheTimeout": null,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "decimals": 0,
+                    "mappings": [{
+                        "id": 0,
+                        "op": "=",
+                        "text": "N/A",
+                        "type": 1,
+                        "value": "null"
+                    }],
+                    "nullValueMode": "connected",
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 3,
+                "x": 0,
+                "y": 8
+            },
+            "hideTimeOverride": true,
+            "id": 61,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "last"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.2.1",
+            "targets": [{
+                "expr": "sum(container_spec_cpu_quota{namespace=\"$cluster_name\", container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"}) / 100 / 1024",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+                "rawQuery": true,
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "timeFrom": "1m",
+            "title": "Cluster CPU Limit",
+            "type": "stat"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "P8s_eks_prod",
+            "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 9,
+                "x": 3,
+                "y": 8
+            },
+            "hiddenSeries": false,
+            "id": 48,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "hideEmpty": true,
+                "hideZero": true,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sideWidth": 200,
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.2.1",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [{
+                "alias": "usage %",
+                "yaxis": 2
+            }],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                    "expr": "sum(irate(container_cpu_usage_seconds_total{namespace=\"$cluster_name\", container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"}[$interval])) by (namespace) / (sum(container_spec_cpu_shares{namespace=\"$cluster_name\", container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"}) by(namespace) / 1024)",
+                    "format": "time_series",
+                    "hide": false,
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "request usage",
+                    "refId": "B"
+                },
+                {
+                    "expr": "(sum(irate(container_cpu_usage_seconds_total{namespace=\"$cluster_name\", container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"}[$interval])) by (namespace))/ (sum(container_spec_cpu_quota{namespace=\"$cluster_name\", container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"}) by (namespace) / 100 / 1024)",
+                    "format": "time_series",
+                    "hide": false,
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "limit usage",
+                    "refId": "C"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "CPU Utilization of the Cluster",
+            "tooltip": {
+                "shared": true,
+                "sort": 2,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "decimals": null,
+                    "format": "percentunit",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "percentunit",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "cacheTimeout": null,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "decimals": 1,
+                    "mappings": [{
+                        "id": 0,
+                        "op": "=",
+                        "text": "N/A",
+                        "type": 1,
+                        "value": "null"
+                    }],
+                    "nullValueMode": "connected",
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 3,
+                "x": 12,
+                "y": 8
+            },
+            "hideTimeOverride": true,
+            "id": 65,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.2.1",
+            "targets": [{
+                "expr": "sum(container_spec_cpu_quota{namespace=\"$cluster_name\", container=~\"$service_name\"}) / 100 / 1024",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+                "rawQuery": true,
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "timeFrom": "1m",
+            "title": "Service(s) CPU Limit",
+            "type": "stat"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "P8s_eks_prod",
+            "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 9,
+                "x": 15,
+                "y": 8
+            },
+            "hiddenSeries": false,
+            "id": 67,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "hideEmpty": true,
+                "hideZero": true,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sideWidth": 300,
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.2.1",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [{
+                "alias": "usage %",
+                "yaxis": 2
+            }],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                    "expr": "sum(irate(container_cpu_usage_seconds_total{namespace=\"$cluster_name\", container=~\"$service_name\"}[$interval])) by (container) / (sum(container_spec_cpu_shares{namespace=\"$cluster_name\", container=~\"$service_name\"}) by(container) / 1024)",
+                    "format": "time_series",
+                    "hide": false,
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "req usage -  {{container}}",
+                    "refId": "B"
+                },
+                {
+                    "expr": "(sum(irate(container_cpu_usage_seconds_total{namespace=\"$cluster_name\", container=~\"$service_name\"}[$interval])) by (container)) / (sum(container_spec_cpu_quota{namespace=\"$cluster_name\", container=~\"$service_name\"}) by (container) / 100 / 1024)",
+                    "format": "time_series",
+                    "hide": false,
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "limit usage - {{container}}",
+                    "refId": "C"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "CPU Utilization of the Service(s)",
+            "tooltip": {
+                "shared": true,
+                "sort": 2,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "percentunit",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "percentunit",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "cacheTimeout": null,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "decimals": 0,
+                    "mappings": [{
+                        "id": 0,
+                        "op": "=",
+                        "text": "N/A",
+                        "type": 1,
+                        "value": "null"
+                    }],
+                    "nullValueMode": "connected",
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 3,
+                "x": 0,
+                "y": 12
+            },
+            "hideTimeOverride": true,
+            "id": 62,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.2.1",
+            "targets": [{
+                "expr": "sum(container_spec_cpu_shares{namespace=\"$cluster_name\", container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"}) / 1024",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+                "rawQuery": true,
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "timeFrom": "1m",
+            "title": "Cluster CPU Request",
+            "type": "stat"
+        },
+        {
+            "cacheTimeout": null,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "decimals": 1,
+                    "mappings": [{
+                        "id": 0,
+                        "op": "=",
+                        "text": "N/A",
+                        "type": 1,
+                        "value": "null"
+                    }],
+                    "nullValueMode": "connected",
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 3,
+                "x": 12,
+                "y": 12
+            },
+            "hideTimeOverride": true,
+            "id": 66,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.2.1",
+            "targets": [{
+                "expr": "sum(container_spec_cpu_shares{namespace=\"$cluster_name\", container=~\"$service_name\"}) / 1024",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 2,
+                "legendFormat": "",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "query": "SELECT mean(\"value\") FROM \"measurement\" WHERE $timeFilter GROUP BY time($__interval) fill(null)",
+                "rawQuery": true,
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "timeFrom": "1m",
+            "title": "Service(s) CPU Cores Request",
+            "type": "stat"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "P8s_eks_prod",
+            "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 16
+            },
+            "hiddenSeries": false,
+            "id": 33,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "hideEmpty": true,
+                "hideZero": true,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sideWidth": 350,
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "connected",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.2.1",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [{
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : sre-sentinel-gateway-844fbdcc89-rq7sd",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : em-rio-feed-server-5d6d9f85c5-gkzdh",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : em-feed-server-7f75cdb8cc-7hb2l",
+                    "yaxis": 2
+                }
+            ],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "expr": "sum by(pod)(irate(container_cpu_usage_seconds_total{namespace=\"$cluster_name\", container=~\"$service_name\"}[$interval])) / on (pod) group_left  sum by(pod)(container_spec_cpu_shares{namespace=\"$cluster_name\", container=~\"$service_name\"} / 1024 )",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "hide": false,
+                "interval": "$interval",
+                "intervalFactor": 2,
+                "legendFormat": "{{pod}}",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Request CPU Utilization by Pod",
+            "tooltip": {
+                "shared": true,
+                "sort": 2,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "decimals": 2,
+                    "format": "percentunit",
+                    "label": "",
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "percentunit",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "P8s_eks_prod",
+            "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 16
+            },
+            "hiddenSeries": false,
+            "id": 68,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "hideEmpty": true,
+                "hideZero": true,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sideWidth": 350,
+                "sort": "current",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "connected",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.2.1",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [{
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : sre-sentinel-gateway-844fbdcc89-rq7sd",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : em-rio-feed-server-5d6d9f85c5-gkzdh",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : em-feed-server-7f75cdb8cc-7hb2l",
+                    "yaxis": 2
+                }
+            ],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "expr": "sum by(pod)(irate(container_cpu_usage_seconds_total{namespace=\"$cluster_name\", container=~\"$service_name\"}[$interval])) / on (pod) group_left sum by(pod)(container_spec_cpu_quota{namespace=\"$cluster_name\", container=~\"$service_name\"} / 100 / 1024 )",
+                "format": "time_series",
+                "hide": false,
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "{{pod}}",
+                "refId": "B"
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Limit CPU Utilization by Pod",
+            "tooltip": {
+                "shared": true,
+                "sort": 2,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "decimals": 2,
+                    "format": "percentunit",
+                    "label": "",
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "percentunit",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "P8s_eks_prod",
+            "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 0,
+                "y": 24
+            },
+            "hiddenSeries": false,
+            "id": 59,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "hideEmpty": true,
+                "hideZero": true,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sideWidth": 350,
+                "sort": "current",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "connected",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.2.1",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [{
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : sre-faas-scripts-f984ffc98-8zdpq",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : sre-faas-scripts-9784c9489-jrxn6",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : sre-sentinel-gateway-844fbdcc89-rq7sd",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : em-rio-feed-server-5d6d9f85c5-4jffx",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-65-1.ec2.internal : em-feed-server-7f75cdb8cc-xk2xh",
+                    "yaxis": 2
+                }
+            ],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "expr": "sum by(pod)(irate(container_cpu_usage_seconds_total{namespace=\"$cluster_name\", container=\"istio-proxy\",pod=~\"$service_name.*\"}[$interval]))",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "hide": false,
+                "interval": "$interval",
+                "intervalFactor": 2,
+                "legendFormat": "{{pod}}",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Request CPU Utilization of Proxy",
+            "tooltip": {
+                "shared": true,
+                "sort": 2,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "percentunit",
+                    "label": "",
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "percentunit",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "P8s_eks_prod",
+            "decimals": 2,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 7,
+                "w": 12,
+                "x": 12,
+                "y": 24
+            },
+            "hiddenSeries": false,
+            "id": 69,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "hideEmpty": true,
+                "hideZero": true,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sideWidth": 350,
+                "sort": "current",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "connected",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.2.1",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [{
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : sre-faas-scripts-f984ffc98-8zdpq",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : sre-faas-scripts-9784c9489-jrxn6",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : sre-sentinel-gateway-844fbdcc89-rq7sd",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-109-187.ec2.internal : em-rio-feed-server-5d6d9f85c5-4jffx",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit: ip-172-30-65-1.ec2.internal : em-feed-server-7f75cdb8cc-xk2xh",
+                    "yaxis": 2
+                }
+            ],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "expr": "sum by(pod)(irate(container_cpu_usage_seconds_total{namespace=\"$cluster_name\", container=\"istio-proxy\", pod=~\"$service_name.*\"}[$interval])) / on (pod) group_left sum by(pod)(container_spec_cpu_quota{namespace=\"$cluster_name\", container=\"istio-proxy\",pod=~\"$service_name.*\"} / 100 / 1024)",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "hide": false,
+                "interval": "$interval",
+                "intervalFactor": 2,
+                "legendFormat": "{{pod}}",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "B",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Limit CPU Utilization of Proxy",
+            "tooltip": {
+                "shared": true,
+                "sort": 2,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "percentunit",
+                    "label": "",
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "percentunit",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "collapsed": false,
+            "datasource": null,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 31
+            },
+            "id": 42,
+            "panels": [],
+            "title": "Mem Status",
+            "type": "row"
+        },
+        {
+            "content": "Notice: ` not include istio-proxy`",
+            "datasource": null,
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 2,
+                "w": 24,
+                "x": 0,
+                "y": 32
+            },
+            "id": 70,
+            "links": [],
+            "mode": "markdown",
+            "options": {
+                "content": "Notice: ` not include istio-proxy`",
+                "mode": "markdown"
+            },
+            "pluginVersion": "7.1.0",
+            "title": "Notice",
+            "type": "text"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 34
+            },
+            "hiddenSeries": false,
+            "id": 49,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sideWidth": 300,
+                "sort": "avg",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.2.1",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [{
+                    "alias": "usage %",
+                    "yaxis": 2
+                },
+                {
+                    "alias": "limit usage",
+                    "yaxis": 2
+                }
+            ],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                    "expr": "sum by(namespace)(container_memory_rss{namespace=\"$cluster_name\", container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"}) / sum by(namespace)(container_spec_memory_limit_bytes{namespace=\"$cluster_name\", container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"})",
+                    "format": "time_series",
+                    "hide": false,
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "limit usage",
+                    "refId": "C"
+                },
+                {
+                    "expr": "sum(container_spec_memory_limit_bytes{namespace=\"$cluster_name\", container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"})",
+                    "format": "time_series",
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "limit bytes",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Memory Utilization of Cluster",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "bytes",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "percentunit",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 34
+            },
+            "hiddenSeries": false,
+            "id": 72,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sideWidth": 300,
+                "sort": "avg",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.2.1",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [{
+                    "alias": "/limit bytes.*/",
+                    "yaxis": 1
+                },
+                {
+                    "alias": "/limit usage.*/",
+                    "yaxis": 2
+                }
+            ],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                    "expr": "sum by(container)(container_memory_rss{namespace=\"$cluster_name\", container=~\"$service_name\"}) / sum by(container)(container_spec_memory_limit_bytes{namespace=\"$cluster_name\", container=~\"$service_name\"})",
+                    "format": "time_series",
+                    "hide": false,
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "limit usage - {{container}}",
+                    "refId": "C"
+                },
+                {
+                    "expr": "sum by (container) (container_spec_memory_limit_bytes{namespace=\"$cluster_name\", container=~\"$service_name\"})",
+                    "format": "time_series",
+                    "hide": false,
+                    "interval": "$interval",
+                    "intervalFactor": 1,
+                    "legendFormat": "limit bytes - {{container}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Memory Utilization of Service(s)",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "format": "bytes",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "percentunit",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "cacheTimeout": null,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "decimals": 1,
+                    "mappings": [{
+                        "id": 0,
+                        "op": "=",
+                        "text": "N/A",
+                        "type": 1,
+                        "value": "null"
+                    }],
+                    "nullValueMode": "connected",
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "bytes"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 7,
+                "w": 3,
+                "x": 0,
+                "y": 42
+            },
+            "hideTimeOverride": true,
+            "id": 73,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.2.1",
+            "targets": [{
+                "expr": "avg (container_spec_memory_limit_bytes{namespace=\"$cluster_name\", container=~\"$service_name\"})",
+                "format": "time_series",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "refId": "B"
+            }],
+            "timeFrom": "1m",
+            "title": "Pod Memory Limit",
+            "type": "stat"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 7,
+                "w": 21,
+                "x": 3,
+                "y": 42
+            },
+            "hiddenSeries": false,
+            "id": 34,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "hideEmpty": false,
+                "hideZero": false,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sideWidth": 400,
+                "sort": "avg",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "connected",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.2.1",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "expr": "avg_over_time(container_memory_rss{namespace=\"$cluster_name\", container=~\"$service_name\"}[$interval])",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 2,
+                "legendFormat": "{{pod}}",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Memory usage by Pod",
+            "tooltip": {
+                "shared": true,
+                "sort": 2,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "decimals": null,
+                    "format": "bytes",
+                    "label": "",
+                    "logBase": 1,
+                    "max": null,
+                    "min": "2",
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": false
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "cacheTimeout": null,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "decimals": 1,
+                    "mappings": [{
+                        "id": 0,
+                        "op": "=",
+                        "text": "N/A",
+                        "type": 1,
+                        "value": "null"
+                    }],
+                    "nullValueMode": "connected",
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [{
+                            "color": "green",
+                            "value": null
+                        }]
+                    },
+                    "unit": "bytes"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 7,
+                "w": 3,
+                "x": 0,
+                "y": 49
+            },
+            "hideTimeOverride": true,
+            "id": 74,
+            "interval": null,
+            "links": [],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "textMode": "auto"
+            },
+            "pluginVersion": "7.2.1",
+            "targets": [{
+                "expr": "avg (container_spec_memory_limit_bytes{namespace=\"$cluster_name\", container=\"istio-proxy\", pod=~\"$service_name.*\"})",
+                "format": "time_series",
+                "interval": "$interval",
+                "intervalFactor": 1,
+                "legendFormat": "",
+                "refId": "B"
+            }],
+            "timeFrom": "1m",
+            "title": "Proxy Memory Limit",
+            "type": "stat"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "P8s_eks_prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 7,
+                "w": 21,
+                "x": 3,
+                "y": 49
+            },
+            "hiddenSeries": false,
+            "id": 60,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": true,
+                "hideEmpty": false,
+                "hideZero": false,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sideWidth": 400,
+                "sort": "avg",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "connected",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "7.2.1",
+            "pointradius": 5,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [{
+                "expr": "avg_over_time(container_memory_rss{namespace=\"$cluster_name\", container=\"istio-proxy\", pod=~\"$service_name.*\"}[$interval])",
+                "format": "time_series",
+                "groupBy": [{
+                        "params": [
+                            "$__interval"
+                        ],
+                        "type": "time"
+                    },
+                    {
+                        "params": [
+                            "null"
+                        ],
+                        "type": "fill"
+                    }
+                ],
+                "interval": "$interval",
+                "intervalFactor": 2,
+                "legendFormat": "{{pod}}",
+                "orderByTime": "ASC",
+                "policy": "default",
+                "refId": "A",
+                "resultFormat": "time_series",
+                "select": [
+                    [{
+                            "params": [
+                                "value"
+                            ],
+                            "type": "field"
+                        },
+                        {
+                            "params": [],
+                            "type": "mean"
+                        }
+                    ]
+                ],
+                "step": 2,
+                "tags": []
+            }],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Proxy Memory Usage by Pod",
+            "tooltip": {
+                "shared": true,
+                "sort": 2,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [{
+                    "decimals": null,
+                    "format": "bytes",
+                    "label": "",
+                    "logBase": 1,
+                    "max": null,
+                    "min": "2",
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": false
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "collapsed": true,
+            "datasource": null,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 56
+            },
+            "id": 40,
+            "panels": [{
+                    "content": "Notice: ` not inlcude istio-proxy`",
+                    "datasource": null,
+                    "description": "",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {}
+                        },
+                        "overrides": []
+                    },
+                    "gridPos": {
+                        "h": 2,
+                        "w": 24,
+                        "x": 0,
+                        "y": 8
+                    },
+                    "id": 71,
+                    "links": [],
+                    "mode": "markdown",
+                    "options": {
+                        "content": "Notice: ` not inlcude istio-proxy`",
+                        "mode": "markdown"
+                    },
+                    "pluginVersion": "7.1.0",
+                    "title": "Notice",
+                    "type": "text"
+                },
+                {
+                    "aliasColors": {},
+                    "bars": false,
+                    "dashLength": 10,
+                    "dashes": false,
+                    "datasource": "P8s_eks_prod",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {}
+                        },
+                        "overrides": []
+                    },
+                    "fill": 1,
+                    "fillGradient": 0,
+                    "gridPos": {
+                        "h": 8,
+                        "w": 12,
+                        "x": 0,
+                        "y": 10
+                    },
+                    "hiddenSeries": false,
+                    "id": 17,
+                    "legend": {
+                        "alignAsTable": true,
+                        "avg": true,
+                        "current": true,
+                        "max": false,
+                        "min": false,
+                        "rightSide": true,
+                        "show": true,
+                        "sideWidth": 400,
+                        "sort": null,
+                        "sortDesc": null,
+                        "total": false,
+                        "values": true
+                    },
+                    "lines": true,
+                    "linewidth": 1,
+                    "links": [],
+                    "nullPointMode": "null",
+                    "options": {
+                        "alertThreshold": true
+                    },
+                    "percentage": false,
+                    "pluginVersion": "7.2.1",
+                    "pointradius": 5,
+                    "points": false,
+                    "renderer": "flot",
+                    "seriesOverrides": [],
+                    "spaceLength": 10,
+                    "stack": false,
+                    "steppedLine": false,
+                    "targets": [{
+                            "expr": "sum(rate(container_network_receive_bytes_total{namespace=\"$cluster_name\",container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"}[$interval])) by(namespace)",
+                            "format": "time_series",
+                            "groupBy": [{
+                                    "params": [
+                                        "$__interval"
+                                    ],
+                                    "type": "time"
+                                },
+                                {
+                                    "params": [
+                                        "null"
+                                    ],
+                                    "type": "fill"
+                                }
+                            ],
+                            "interval": "$interval",
+                            "intervalFactor": 2,
+                            "legendFormat": "RX : {{namespace}}",
+                            "orderByTime": "ASC",
+                            "policy": "default",
+                            "refId": "A",
+                            "resultFormat": "time_series",
+                            "select": [
+                                [{
+                                        "params": [
+                                            "value"
+                                        ],
+                                        "type": "field"
+                                    },
+                                    {
+                                        "params": [],
+                                        "type": "mean"
+                                    }
+                                ]
+                            ],
+                            "step": 2,
+                            "tags": []
+                        },
+                        {
+                            "expr": "-sum(rate(container_network_transmit_bytes_total{namespace=\"$cluster_name\",container!=\"istio-proxy\", container=~\"^[[:alpha:]]*\"}[$interval])) by(namespace)",
+                            "format": "time_series",
+                            "instant": false,
+                            "interval": "$interval",
+                            "intervalFactor": 2,
+                            "legendFormat": "TX : {{namespace}}",
+                            "refId": "B"
+                        }
+                    ],
+                    "thresholds": [],
+                    "timeFrom": null,
+                    "timeRegions": [],
+                    "timeShift": null,
+                    "title": "Network of Cluster",
+                    "tooltip": {
+                        "shared": true,
+                        "sort": 0,
+                        "value_type": "individual"
+                    },
+                    "type": "graph",
+                    "xaxis": {
+                        "buckets": null,
+                        "mode": "time",
+                        "name": null,
+                        "show": true,
+                        "values": []
+                    },
+                    "yaxes": [{
+                            "format": "Bps",
+                            "label": null,
+                            "logBase": 1,
+                            "max": null,
+                            "min": null,
+                            "show": true
+                        },
+                        {
+                            "format": "short",
+                            "label": null,
+                            "logBase": 1,
+                            "max": null,
+                            "min": null,
+                            "show": true
+                        }
+                    ],
+                    "yaxis": {
+                        "align": false,
+                        "alignLevel": null
+                    }
+                },
+                {
+                    "aliasColors": {},
+                    "bars": false,
+                    "dashLength": 10,
+                    "dashes": false,
+                    "datasource": "P8s_eks_prod",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {}
+                        },
+                        "overrides": []
+                    },
+                    "fill": 1,
+                    "fillGradient": 0,
+                    "gridPos": {
+                        "h": 8,
+                        "w": 12,
+                        "x": 12,
+                        "y": 10
+                    },
+                    "hiddenSeries": false,
+                    "id": 50,
+                    "legend": {
+                        "alignAsTable": true,
+                        "avg": true,
+                        "current": true,
+                        "max": false,
+                        "min": false,
+                        "rightSide": true,
+                        "show": true,
+                        "sideWidth": 400,
+                        "sort": null,
+                        "sortDesc": null,
+                        "total": false,
+                        "values": true
+                    },
+                    "lines": true,
+                    "linewidth": 1,
+                    "links": [],
+                    "nullPointMode": "connected",
+                    "options": {
+                        "alertThreshold": true
+                    },
+                    "percentage": false,
+                    "pluginVersion": "7.2.1",
+                    "pointradius": 5,
+                    "points": false,
+                    "renderer": "flot",
+                    "seriesOverrides": [],
+                    "spaceLength": 10,
+                    "stack": false,
+                    "steppedLine": false,
+                    "targets": [{
+                            "expr": "sum(rate(container_network_receive_bytes_total{namespace=\"$cluster_name\", pod=~\"$service_name.*\", container_name=~\"[[:alpha:]]*\"}[$interval])) by(mobiu_service)",
+                            "format": "time_series",
+                            "groupBy": [{
+                                    "params": [
+                                        "$__interval"
+                                    ],
+                                    "type": "time"
+                                },
+                                {
+                                    "params": [
+                                        "null"
+                                    ],
+                                    "type": "fill"
+                                }
+                            ],
+                            "interval": "$interval",
+                            "intervalFactor": 2,
+                            "legendFormat": "RX :",
+                            "orderByTime": "ASC",
+                            "policy": "default",
+                            "refId": "A",
+                            "resultFormat": "time_series",
+                            "select": [
+                                [{
+                                        "params": [
+                                            "value"
+                                        ],
+                                        "type": "field"
+                                    },
+                                    {
+                                        "params": [],
+                                        "type": "mean"
+                                    }
+                                ]
+                            ],
+                            "step": 2,
+                            "tags": []
+                        },
+                        {
+                            "expr": "-sum(rate(container_network_transmit_bytes_total{namespace=\"$cluster_name\", pod=~\"$service_name.*\", container_name=~\"[[:alpha:]]*\"}[$interval])) by(mobiu_service)",
+                            "format": "time_series",
+                            "instant": false,
+                            "interval": "$interval",
+                            "intervalFactor": 2,
+                            "legendFormat": "TX",
+                            "refId": "B"
+                        }
+                    ],
+                    "thresholds": [],
+                    "timeFrom": null,
+                    "timeRegions": [],
+                    "timeShift": null,
+                    "title": "Network by Service",
+                    "tooltip": {
+                        "shared": true,
+                        "sort": 0,
+                        "value_type": "individual"
+                    },
+                    "type": "graph",
+                    "xaxis": {
+                        "buckets": null,
+                        "mode": "time",
+                        "name": null,
+                        "show": true,
+                        "values": []
+                    },
+                    "yaxes": [{
+                            "format": "Bps",
+                            "label": null,
+                            "logBase": 1,
+                            "max": null,
+                            "min": null,
+                            "show": true
+                        },
+                        {
+                            "format": "short",
+                            "label": null,
+                            "logBase": 1,
+                            "max": null,
+                            "min": null,
+                            "show": true
+                        }
+                    ],
+                    "yaxis": {
+                        "align": false,
+                        "alignLevel": null
+                    }
+                },
+                {
+                    "aliasColors": {},
+                    "bars": false,
+                    "dashLength": 10,
+                    "dashes": false,
+                    "datasource": "P8s_eks_prod",
+                    "fieldConfig": {
+                        "defaults": {
+                            "custom": {}
+                        },
+                        "overrides": []
+                    },
+                    "fill": 1,
+                    "fillGradient": 0,
+                    "gridPos": {
+                        "h": 9,
+                        "w": 24,
+                        "x": 0,
+                        "y": 18
+                    },
+                    "hiddenSeries": false,
+                    "id": 58,
+                    "legend": {
+                        "alignAsTable": true,
+                        "avg": true,
+                        "current": true,
+                        "max": false,
+                        "min": false,
+                        "rightSide": true,
+                        "show": true,
+                        "sideWidth": 400,
+                        "total": false,
+                        "values": true
+                    },
+                    "lines": true,
+                    "linewidth": 1,
+                    "links": [],
+                    "maxDataPoints": 500,
+                    "nullPointMode": "connected",
+                    "options": {
+                        "alertThreshold": true
+                    },
+                    "percentage": false,
+                    "pluginVersion": "7.2.1",
+                    "pointradius": 5,
+                    "points": false,
+                    "renderer": "flot",
+                    "seriesOverrides": [],
+                    "spaceLength": 10,
+                    "stack": false,
+                    "steppedLine": false,
+                    "targets": [{
+                            "expr": "sum(rate(container_network_receive_bytes_total{namespace=\"$cluster_name\",pod=~\"$service_name.*\", container_name=~\"[[:alpha:]]*\",}[$interval])) by(pod)",
+                            "format": "time_series",
+                            "groupBy": [{
+                                    "params": [
+                                        "$__interval"
+                                    ],
+                                    "type": "time"
+                                },
+                                {
+                                    "params": [
+                                        "null"
+                                    ],
+                                    "type": "fill"
+                                }
+                            ],
+                            "interval": "$interval",
+                            "intervalFactor": 2,
+                            "legendFormat": "RX : {{pod}}",
+                            "orderByTime": "ASC",
+                            "policy": "default",
+                            "refId": "A",
+                            "resultFormat": "time_series",
+                            "select": [
+                                [{
+                                        "params": [
+                                            "value"
+                                        ],
+                                        "type": "field"
+                                    },
+                                    {
+                                        "params": [],
+                                        "type": "mean"
+                                    }
+                                ]
+                            ],
+                            "step": 2,
+                            "tags": []
+                        },
+                        {
+                            "expr": "-sum(rate(container_network_transmit_bytes_total{namespace=\"$cluster_name\",pod=~\"$service_name.*\", container_name=~\"[[:alpha:]]*\",}[$interval])) by(pod)",
+                            "format": "time_series",
+                            "instant": false,
+                            "interval": "$interval",
+                            "intervalFactor": 2,
+                            "legendFormat": "TX : {{pod}}",
+                            "refId": "B"
+                        }
+                    ],
+                    "thresholds": [],
+                    "timeFrom": null,
+                    "timeRegions": [],
+                    "timeShift": null,
+                    "title": "Network by Pod",
+                    "tooltip": {
+                        "shared": true,
+                        "sort": 0,
+                        "value_type": "individual"
+                    },
+                    "type": "graph",
+                    "xaxis": {
+                        "buckets": null,
+                        "mode": "time",
+                        "name": null,
+                        "show": true,
+                        "values": []
+                    },
+                    "yaxes": [{
+                            "format": "Bps",
+                            "label": null,
+                            "logBase": 1,
+                            "max": null,
+                            "min": null,
+                            "show": true
+                        },
+                        {
+                            "format": "short",
+                            "label": null,
+                            "logBase": 1,
+                            "max": null,
+                            "min": null,
+                            "show": true
+                        }
+                    ],
+                    "yaxis": {
+                        "align": false,
+                        "alignLevel": null
+                    }
+                }
+            ],
+            "title": "Network Status",
+            "type": "row"
+        }
+    ],
+    "refresh": false,
+    "schemaVersion": 26,
+    "style": "dark",
+    "tags": [
+        "prometheus",
+        "capacity"
+    ],
+    "templating": {
+        "list": [{
+                "allValue": "",
+                "current": {
+                    "selected": false,
+                    "text": "prod",
+                    "value": "prod"
+                },
+                "datasource": "P8s_eks_prod",
+                "definition": "",
+                "hide": 0,
+                "includeAll": false,
+                "label": "Cluster Name",
+                "multi": false,
+                "name": "cluster_name",
+                "options": [],
+                "query": "container_tasks_state",
+                "refresh": 1,
+                "regex": "/namespace=\"([^\"]+)\"/",
+                "skipUrlSync": false,
+                "sort": 0,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": "",
+                "current": {
+                    "selected": false,
+                    "text": "ad-adx-api-v18",
+                    "value": "ad-adx-api-v18"
+                },
+                "datasource": "P8s_eks_prod",
+                "definition": "",
+                "hide": 0,
+                "includeAll": false,
+                "label": "Service Name",
+                "multi": false,
+                "name": "service_name",
+                "options": [],
+                "query": "query_result(container_tasks_state{namespace=\"$cluster_name\", container!=\"POD\", container!=\"istio-proxy\"})",
+                "refresh": 1,
+                "regex": "/container=\"([^\"]+)\"/",
+                "skipUrlSync": false,
+                "sort": 1,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "auto": false,
+                "auto_count": 30,
+                "auto_min": "30s",
+                "current": {
+                    "selected": false,
+                    "text": "1m",
+                    "value": "1m"
+                },
+                "hide": 0,
+                "label": "Interval",
+                "name": "interval",
+                "options": [{
+                        "selected": true,
+                        "text": "1m",
+                        "value": "1m"
+                    },
+                    {
+                        "selected": false,
+                        "text": "5m",
+                        "value": "5m"
+                    },
+                    {
+                        "selected": false,
+                        "text": "10m",
+                        "value": "10m"
+                    },
+                    {
+                        "selected": false,
+                        "text": "30m",
+                        "value": "30m"
+                    },
+                    {
+                        "selected": false,
+                        "text": "1h",
+                        "value": "1h"
+                    },
+                    {
+                        "selected": false,
+                        "text": "6h",
+                        "value": "6h"
+                    },
+                    {
+                        "selected": false,
+                        "text": "12h",
+                        "value": "12h"
+                    },
+                    {
+                        "selected": false,
+                        "text": "1d",
+                        "value": "1d"
+                    },
+                    {
+                        "selected": false,
+                        "text": "7d",
+                        "value": "7d"
+                    },
+                    {
+                        "selected": false,
+                        "text": "14d",
+                        "value": "14d"
+                    },
+                    {
+                        "selected": false,
+                        "text": "30d",
+                        "value": "30d"
+                    }
+                ],
+                "query": "1m,5m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+                "queryValue": "",
+                "refresh": 2,
+                "skipUrlSync": false,
+                "type": "interval"
+            }
+        ]
+    },
+    "time": {
+        "from": "now-30m",
+        "to": "now"
+    },
+    "timepicker": {
+        "refresh_intervals": [
+            "5s",
+            "10s",
+            "30s",
+            "1m",
+            "5m",
+            "15m",
+            "30m",
+            "1h",
+            "2h",
+            "1d"
+        ],
+        "time_options": [
+            "5m",
+            "15m",
+            "1h",
+            "6h",
+            "12h",
+            "24h",
+            "2d",
+            "7d",
+            "30d"
+        ]
+    },
+    "timezone": "",
+    "title": "Kube Containers Basic Performance",
+    "uid": "xljlewrZz",
+    "version": 82
+}
